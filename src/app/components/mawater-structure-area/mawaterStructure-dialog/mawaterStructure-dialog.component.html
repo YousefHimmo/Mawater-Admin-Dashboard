@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Status</h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="mawaterStructureForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="structureName" class="form-label">Name</label>
+      <input [ngClass]="{'is-invalid': mawaterStructureForm.get('structureName')?.errors && mawaterStructureForm.get('structureName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="structureName" name="structureName" 
+      formControlName="structureName"  [(ngModel)]="mawaterStructure.structureName" required/>     
+      @if(mawaterStructureForm.get('structureName')?.touched && mawaterStructureForm.get('structureName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="structureArabicName" class="form-label">Arabic Name</label>
+      <input [ngClass]="{'is-invalid': mawaterStructureForm.get('structureArabicName')?.errors && mawaterStructureForm.get('structureArabicName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="structureArabicName" name="structureArabicName" 
+      formControlName="structureArabicName" [(ngModel)]="mawaterStructure.structureArabicName"  required/>
+      @if(mawaterStructureForm.get('structureArabicName')?.touched && mawaterStructureForm.get('structureArabicName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <button [disabled]="!mawaterStructureForm.valid" type="submit" class="btn text-white" style="background-color: #8A1538;">Save</button>
+  </form>
+</mat-dialog-content>

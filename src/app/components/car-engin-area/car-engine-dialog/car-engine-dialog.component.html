@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>City</h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="engineForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="capacityName" class="form-label">Name</label>
+      <input [ngClass]="{'is-invalid': engineForm.get('capacityName')?.errors && engineForm.get('capacityName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="capacityName" name="capacityName" 
+      formControlName="capacityName"  [(ngModel)]="engine.capacityName" required/>     
+      @if(engineForm.get('capacityName')?.touched  && engineForm.get('capacityName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="capacityArabicName" class="form-label">Arabic Name</label>
+      <input [ngClass]="{'is-invalid': engineForm.get('capacityArabicName')?.errors && engineForm.get('capacityArabicName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="capacityArabicName" name="capacityArabicName" 
+      formControlName="capacityArabicName" [(ngModel)]="engine.capacityArabicName"  required/>
+      @if(engineForm.get('capacityArabicName')?.touched  && engineForm.get('capacityArabicName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <button [disabled]="!engineForm.valid" type="submit" class="btn text-white" style="background-color: #8A1538;">Save</button>
+  </form>
+</mat-dialog-content>

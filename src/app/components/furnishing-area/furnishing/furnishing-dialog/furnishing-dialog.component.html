@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Furnishing</h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="furnishingForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="furnishingName" class="form-label">Name</label>
+      <input [ngClass]="{'is-invalid': furnishingForm.get('furnishingName')?.errors && furnishingForm.get('furnishingName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="furnishingName" name="furnishingName" 
+      formControlName="furnishingName"  [(ngModel)]="furnishing.furnishingName" required/>     
+      @if(furnishingForm.get('furnishingName')?.touched && furnishingForm.get('furnishingName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="furnishingArabicName" class="form-label">Arabic Name</label>
+      <input [ngClass]="{'is-invalid': furnishingForm.get('furnishingArabicName')?.errors && furnishingForm.get('furnishingArabicName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="furnishingArabicName" name="furnishingArabicName" 
+      formControlName="furnishingArabicName" [(ngModel)]="furnishing.furnishingArabicName"  required/>
+      @if(furnishingForm.get('furnishingArabicName')?.touched && furnishingForm.get('furnishingArabicName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <button [disabled]="!furnishingForm.valid" type="submit" class="btn text-white" style="background-color: #8A1538;">Save</button>
+  </form>
+</mat-dialog-content>

@@ -1,0 +1,27 @@
+<h2 mat-dialog-title> Car Transmission </h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="carTransmissionForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="transName" class="form-label">Name</label>
+      <input [ngClass]="{'is-invalid': carTransmissionForm.get('transName')?.errors && carTransmissionForm.get('transName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="transName" name="transName" 
+      formControlName="transName"  [(ngModel)]="carTransmission.transName" required/>     
+      @if(carTransmissionForm.get('transName')?.touched  && carTransmissionForm.get('transName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="transArabicName" class="form-label">Arabic Name</label>
+      <input [ngClass]="{'is-invalid': carTransmissionForm.get('transArabicName')?.errors && carTransmissionForm.get('transArabicName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="transArabicName" name="transArabicName" 
+      formControlName="transArabicName" [(ngModel)]="carTransmission.transArabicName"  required/>
+      @if(carTransmissionForm.get('transArabicName')?.touched  && carTransmissionForm.get('transArabicName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <button [disabled]="!carTransmissionForm.valid" type="submit"   class="btn text-white"
+    style="background-color: #8a1538;">Save</button>
+  </form>
+</mat-dialog-content>

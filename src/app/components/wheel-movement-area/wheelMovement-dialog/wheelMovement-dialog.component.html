@@ -1,0 +1,26 @@
+<h2 mat-dialog-title> Wheel Movement </h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="wheelMovementForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="wheelMovementName" class="form-label">Name</label>
+      <input [ngClass]="{'is-invalid': wheelMovementForm.get('wheelMovementName')?.errors && wheelMovementForm.get('wheelMovementName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="wheelMovementName" name="wheelMovementName" 
+      formControlName="wheelMovementName"  [(ngModel)]="wheelMovement.wheelMovementName" required/>     
+      @if(wheelMovementForm.get('wheelMovementName')?.touched  && wheelMovementForm.get('wheelMovementName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="wheelMovementArabicName" class="form-label">Arabic Name</label>
+      <input [ngClass]="{'is-invalid': wheelMovementForm.get('wheelMovementArabicName')?.errors && wheelMovementForm.get('wheelMovementArabicName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="wheelMovementArabicName" name="wheelMovementArabicName" 
+      formControlName="wheelMovementArabicName" [(ngModel)]="wheelMovement.wheelMovementArabicName"  required/>
+      @if(wheelMovementForm.get('wheelMovementArabicName')?.touched  && wheelMovementForm.get('wheelMovementArabicName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <button [disabled]="!wheelMovementForm.valid" type="submit" class="btn text-white" style="background-color: #8A1538;">Save</button>
+  </form>
+</mat-dialog-content>

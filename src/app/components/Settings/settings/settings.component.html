@@ -1,0 +1,113 @@
+<div class="header">
+  <div class="left">
+      <h1>Settings</h1>
+      <ul class="breadcrumb">
+          <li><a routerLink="dashboard/home" routerLinkActive="active" >
+                  Home  /
+              </a></li>
+          <li><a class="active">Settings</a></li>
+      </ul>
+  </div>
+</div>
+<div class="row">
+   <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">   
+        <div class="row mb-3">
+          <div class="col-sm-6">
+            <label for="phoneNumber" class="form-label settings-lable">Phone Number</label>
+            <input  [ngClass]="{'is-invalid': settingsForm.get('phoneNumber')?.errors && settingsForm.get('phoneNumber')?.touched}" 
+            type="text" class="form-control form-control-sm" id="phoneNumber" name="phoneNumber" 
+            formControlName="phoneNumber" rows="3" required/>
+
+            <div class="invalid-feedback"
+            *ngIf="settingsForm.get('phoneNumber')?.touched && settingsForm.get('phoneNumber')?.hasError('required')">
+              required.</div>
+          </div>
+          
+          <div class="col-sm-6">
+            <label for="whatsAppNumber" class="form-label settings-lable">Whats App Number</label>
+            <input  [ngClass]="{'is-invalid': settingsForm.get('whatsAppNumber')?.errors && settingsForm.get('whatsAppNumber')?.touched}" 
+            type="text" class="form-control form-control-sm" id="whatsAppNumber" name="whatsAppNumber" 
+            formControlName="whatsAppNumber" rows="3" required/>
+
+            <div class="invalid-feedback"
+            *ngIf="settingsForm.get('whatsAppNumber')?.touched && settingsForm.get('whatsAppNumber')?.hasError('required')">
+              required.</div>
+          </div>
+
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-6">
+            <label for="faceBookUrl" class="form-label settings-lable">FaceBook Url</label>
+            <input  [ngClass]="{'is-invalid': settingsForm.get('faceBookUrl')?.errors && settingsForm.get('faceBookUrl')?.touched}" 
+            type="text" class="form-control form-control-sm" id="faceBookUrl" name="faceBookUrl" 
+            formControlName="faceBookUrl" rows="3" required/>
+
+            <div class="invalid-feedback"
+            *ngIf="settingsForm.get('faceBookUrl')?.touched && settingsForm.get('faceBookUrl')?.hasError('required')">
+              required.</div>
+          </div>
+          
+          <div class="col-sm-6">
+            <label for="instagramUrl" class="form-label settings-lable">Instagram Url</label>
+            <input  [ngClass]="{'is-invalid': settingsForm.get('instagramUrl')?.errors && settingsForm.get('instagramUrl')?.touched}" 
+            type="text" class="form-control form-control-sm" id="instagramUrl" name="instagramUrl" 
+            formControlName="instagramUrl" rows="3" required/>
+
+            <div class="invalid-feedback"
+            *ngIf="settingsForm.get('instagramUrl')?.touched && settingsForm.get('instagramUrl')?.hasError('required')">
+              required.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="mb-3">
+              <label for="location" class="form-label settings-lable">Location</label>
+              <input  [ngClass]="{'is-invalid': settingsForm.get('location')?.errors && settingsForm.get('location')?.touched}" 
+              type="text" class="form-control form-control-sm" id="location" name="location" 
+              formControlName="location" rows="3"  required>
+
+              <div class="invalid-feedback"
+              *ngIf="settingsForm.get('location')?.touched && settingsForm.get('location')?.hasError('required')"
+              >
+                required.</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="mb-3">
+              <label for="arabiclocation" class="form-label settings-lable">Arabic Location</label>
+              <input  [ngClass]="{'is-invalid': settingsForm.get('arabiclocation')?.errors && settingsForm.get('arabiclocation')?.touched}" 
+              type="text" class="form-control form-control-sm" id="arabiclocation" name="arabiclocation" 
+              formControlName="arabiclocation" rows="3"  required>
+
+              <div class="invalid-feedback"
+              *ngIf="settingsForm.get('arabiclocation')?.touched && settingsForm.get('arabiclocation')?.hasError('required')">
+                required.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-12">
+            <div class="mb-3">
+              <label for="email" class="form-label settings-lable">Email</label>
+              <input  [ngClass]="{'is-invalid': settingsForm.get('email')?.errors && settingsForm.get('email')?.touched}" 
+              type="text" class="form-control form-control-sm" id="email" name="email" 
+              formControlName="email" rows="3" required>
+              <div class="invalid-feedback"
+              *ngIf="settingsForm.get('email')?.touched && settingsForm.get('email')?.hasError('required')"
+              >
+                required.</div>
+            </div>
+          </div>
+        </div>
+        <button [disabled]="!settingsForm.valid" 
+        type="submit" 
+        class="btn text-white float-end"
+         style="background-color: #8A1538;">Save</button>
+      </form>
+      </div>
+    </div>
+   </div>
+</div>

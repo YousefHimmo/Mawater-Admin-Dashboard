@@ -1,0 +1,79 @@
+<h2 mat-dialog-title>mawater</h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="mawaterForm" (ngSubmit)="onSubmit()">
+    <img class="img-fluid rounded mx-auto d-block bg-white p-5" [src]="src" width="100%" height="50px" />
+    <button type="button" mat-raised-button (click)="fileInput.click()">
+      Choose File
+    </button>
+    <input
+      hidden
+      (change)="onFileSelected($event)"
+      #fileInput
+      type="file"
+      id="file"
+    />
+    <div class="mb-3">
+      <label for="mawaterName" class="form-label">Name</label>
+      <input
+        [ngClass]="{
+          'is-invalid':
+            mawaterForm.get('mawaterName')?.errors &&
+            mawaterForm.get('mawaterName')?.touched
+        }"
+        type="text"
+        class="form-control form-control-sm"
+        id="mawaterName"
+        name="mawaterName"
+        formControlName="mawaterName"
+        [(ngModel)]="mawater.mawaterName"
+        required
+      />
+      @if(mawaterForm.get('mawaterName')?.touched &&
+      mawaterForm.get('mawaterName')?.hasError('required')){
+      <div class="invalid-feedback">required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="mawaterArabicName" class="form-label">Arabic Name</label>
+      <input
+        [ngClass]="{
+          'is-invalid':
+            mawaterForm.get('mawaterArabicName')?.errors &&
+            mawaterForm.get('mawaterArabicName')?.touched
+        }"
+        type="text"
+        class="form-control form-control-sm"
+        id="mawaterArabicName"
+        name="mawaterArabicName"
+        formControlName="mawaterArabicName"
+        [(ngModel)]="mawater.mawaterArabicName"
+        required
+      />
+      @if(mawaterForm.get('mawaterArabicName')?.touched &&
+      mawaterForm.get('mawaterArabicName')?.hasError('required')){
+      <div class="invalid-feedback">required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="catergory" class="form-label"> Catergory</label>
+      <select class="form-select form-select-sm" formControlName="catergory"  
+      [ngClass]="{ 'is-invalid': mawaterForm.get('catergory')?.errors && mawaterForm.get('catergory')?.touched }" aria-label="Default select example">
+       @for (category of categories; track $index) {
+        <option value="{{category.categoryId}}">{{category.categoryName}}</option>
+       }
+      </select>
+      @if(mawaterForm.get('catergory')?.touched &&
+      mawaterForm.get('catergory')?.hasError('required')){
+      <div class="invalid-feedback">required.</div>
+      }
+    </div>
+    <button
+      [disabled]="!mawaterForm.valid"
+      type="submit"
+      class="btn text-white"
+      style="background-color: #8a1538;"
+    >
+      Save
+    </button>
+  </form>
+</mat-dialog-content>

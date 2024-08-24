@@ -1,0 +1,32 @@
+<div class="loginContainer">
+  <div class="forms-loginContainer">
+    <div class="signin-signup">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="sign-in-form">
+        <h2 class="title fw-bold font-monospace ">Sign in</h2>
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input formControlName = "email" name="email" type="email" placeholder="Email" />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input formControlName = "password" name="password" type="password" placeholder="Password" />
+        </div>
+        @if(!isLoggedIn){
+          <button [disabled]="!loginForm.valid" type="submit" class="btn solid">Login</button>
+        }
+        @else {
+          <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Login
+            <span class="visually-hidden">Loading...</span>
+          </button>
+        }
+      </form>
+    </div>
+  </div>
+  <div class="panels-loginContainer">
+    <div class="panel left-panel">
+      <img src="../../../assets/images/login_illustration.png" class="image rounded" alt="" />
+    </div>
+  </div>
+</div>

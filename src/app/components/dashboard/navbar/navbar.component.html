@@ -1,0 +1,23 @@
+<nav>
+  <i class='bx bx-menu' #menuBar (click)="toggleSidebar()"></i>
+  <form action="#">
+      <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button class="search-btn" (click)="toggleSearchForm($event)">
+            <i class="bx" [ngClass]="{'bx-search': !isSearchFormShown, 'bx-x': isSearchFormShown}"></i>
+          </button>
+      </div>
+  </form>
+  
+    <input  type="checkbox" id="theme-toggle" [(ngModel)]="theamValue" (change)="toggleTheme($event)" hidden>
+    <label for="theme-toggle" class="theme-toggle"></label>
+    <a style="cursor: pointer;" class="notif">
+        <i class='bx bx-bell'></i>
+        <span class="count">12</span>
+    </a>
+    <a routerLink="dashboard/home" routerLinkActive="active" class="profile">
+        <img src="../../../../assets/images/logo.png">
+    </a>
+  
+ 
+</nav>

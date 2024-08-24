@@ -1,0 +1,107 @@
+<h2 mat-dialog-title>Payment Package</h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="paymentPackageForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="paymentPackageName" class="form-label">Name</label>
+      <input
+        [ngClass]="{
+          'is-invalid':
+            paymentPackageForm.get('paymentPackageName')?.errors &&
+            paymentPackageForm.get('paymentPackageName')?.touched
+        }"
+        type="text"
+        class="form-control form-control-sm"
+        id="paymentPackageName"
+        name="paymentPackageName"
+        formControlName="paymentPackageName"
+        required
+      />
+      @if(paymentPackageForm.get('paymentPackageName')?.touched &&
+      paymentPackageForm.get('paymentPackageName')?.hasError('required')){
+      <div class="invalid-feedback">required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="paymentArabicName" class="form-label">Arabic Name</label>
+      <input
+        [ngClass]="{
+          'is-invalid':
+            paymentPackageForm.get('paymentArabicName')?.errors &&
+            paymentPackageForm.get('paymentArabicName')?.touched
+        }"
+        type="text"
+        class="form-control form-control-sm"
+        id="paymentArabicName"
+        name="paymentArabicName"
+        formControlName="paymentArabicName"
+        required
+      />
+      @if(paymentPackageForm.get('paymentArabicName')?.touched &&
+      paymentPackageForm.get('paymentArabicName')?.hasError('required')){
+      <div class="invalid-feedback">required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="paymentPackageDescription" class="form-label">Description</label>
+      <input
+        [ngClass]="{
+          'is-invalid':
+            paymentPackageForm.get('paymentPackageDescription')?.errors &&
+            paymentPackageForm.get('paymentPackageDescription')?.touched
+        }"
+        type="text"
+        class="form-control form-control-sm"
+        id="paymentPackageDescription"
+        name="paymentPackageDescription"
+        formControlName="paymentPackageDescription"
+        required
+      />
+      @if(paymentPackageForm.get('paymentPackageDescription')?.touched &&
+      paymentPackageForm.get('paymentPackageDescription')?.hasError('required')){
+      <div class="invalid-feedback">required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="paymentPackagePrice" class="form-label">Price</label>
+      <input
+        [ngClass]="{
+          'is-invalid':
+            paymentPackageForm.get('paymentPackagePrice')?.errors &&
+            paymentPackageForm.get('paymentPackagePrice')?.touched
+        }"
+        type="number"
+        class="form-control form-control-sm"
+        id="paymentPackagePrice"
+        name="paymentPackagePrice"
+        min="1"
+        formControlName="paymentPackagePrice"
+        required
+      />
+      @if(paymentPackageForm.get('paymentPackagePrice')?.touched &&
+      paymentPackageForm.get('paymentPackagePrice')?.hasError('required')){
+      <div class="invalid-feedback">required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Features</label>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Feature</mat-label>
+          <mat-select [formControl]="features" multiple>
+            @for (feature of paymentFeatures; track $index) {
+          <mat-option [value]="feature.paymentFeatureName">{{feature.paymentFeatureName}}</mat-option>
+        }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <button
+      [disabled]="!paymentPackageForm.valid"
+      type="submit"
+      class="btn text-white"
+      style="background-color: #8a1538"
+    >
+      Save
+    </button>
+  </form>
+</mat-dialog-content>

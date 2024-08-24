@@ -1,0 +1,87 @@
+<h2 mat-dialog-title>Category</h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <img class="img-fluid rounded mx-auto d-block bg-dark p-5" [src]="src" width="100%" height="50px" />
+    <button type="button" mat-raised-button (click)="fileInput.click()">
+      Choose File
+    </button>
+    <input
+      hidden
+      (change)="onFileSelected($event)"
+      #fileInput
+      type="file"
+      id="file"
+    />
+    <div class="mb-3">
+      <label for="categoryName" class="form-label">Name</label>
+      <input
+        [ngClass]="{
+          'is-invalid':
+            categoryForm.get('categoryName')?.errors &&
+            categoryForm.get('categoryName')?.touched
+        }"
+        type="text"
+        class="form-control form-control-sm"
+        id="categoryName"
+        name="categoryName"
+        formControlName="categoryName"
+        [(ngModel)]="category.categoryName"
+        required
+      />
+      @if(categoryForm.get('categoryName')?.touched &&
+      categoryForm.get('categoryName')?.hasError('required')){
+      <div class="invalid-feedback">required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="categoryArabicName" class="form-label">Arabic Name</label>
+      <input
+        [ngClass]="{
+          'is-invalid':
+            categoryForm.get('categoryArabicName')?.errors &&
+            categoryForm.get('categoryArabicName')?.touched
+        }"
+        type="text"
+        class="form-control form-control-sm"
+        id="categoryArabicName"
+        name="categoryArabicName"
+        formControlName="categoryArabicName"
+        [(ngModel)]="category.categoryArabicName"
+        required
+      />
+      @if(categoryForm.get('categoryArabicName')?.touched &&
+      categoryForm.get('categoryArabicName')?.hasError('required')){
+      <div class="invalid-feedback">required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="sortNumber" class="form-label">Sort Number</label>
+      <input
+        [ngClass]="{
+          'is-invalid':
+            categoryForm.get('sortNumber')?.errors &&
+            categoryForm.get('sortNumber')?.touched
+        }"
+        type="text"
+        class="form-control form-control-sm"
+        id="sortNumber"
+        name="sortNumber"
+        formControlName="sortNumber"
+        [(ngModel)]="category.sortNumber"
+        required
+      />
+      @if(categoryForm.get('sortNumber')?.touched &&
+      categoryForm.get('sortNumber')?.hasError('required')){
+      <div class="invalid-feedback">required.</div>
+      }
+    </div>
+    <button
+      [disabled]="!categoryForm.valid"
+      type="submit"
+      class="btn text-white"
+      style="background-color: #8a1538;"
+    >
+      Save
+    </button>
+  </form>
+</mat-dialog-content>

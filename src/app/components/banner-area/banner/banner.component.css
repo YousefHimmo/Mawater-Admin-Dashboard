@@ -1,0 +1,17 @@
+
+.btnCard{
+    position: relative;
+    margin-bottom: -20pc;
+    text-align: end;
+    font-size: 17px;
+    top: 1px;
+    right: 1px;
+    background-color: #8a1538;
+}
+.imageCard{
+    cursor: pointer;
+}
+.imageCard img{
+    width: 100%;
+    height: 65%;
+}

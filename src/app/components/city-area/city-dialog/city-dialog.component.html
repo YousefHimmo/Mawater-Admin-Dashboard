@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>City</h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="cityForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="cityName" class="form-label">Name</label>
+      <input [ngClass]="{'is-invalid': cityForm.get('cityName')?.errors && cityForm.get('cityName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="cityName" name="cityAName" 
+      formControlName="cityName"  [(ngModel)]="city.cityName" required/>     
+      @if(cityForm.get('cityName')?.touched  && cityForm.get('cityName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="cityArabicName" class="form-label">Arabic Name</label>
+      <input [ngClass]="{'is-invalid': cityForm.get('cityArabicName')?.errors && cityForm.get('cityArabicName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="cityArabicName" name="cityArabicName" 
+      formControlName="cityArabicName" [(ngModel)]="city.cityArabicName"  required/>
+      @if(cityForm.get('cityArabicName')?.touched  && cityForm.get('cityArabicName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <button [disabled]="!cityForm.valid" type="submit" class="btn text-white" style="background-color: #8A1538;">Save</button>
+  </form>
+</mat-dialog-content>

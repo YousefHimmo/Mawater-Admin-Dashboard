@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>City</h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="colorForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="colorName" class="form-label">Name</label>
+      <input [ngClass]="{'is-invalid': colorForm.get('colorName')?.errors && colorForm.get('colorName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="colorName" name="cityAName" 
+      formControlName="colorName"  [(ngModel)]="color.colorName" required/>     
+      @if(colorForm.get('colorName')?.touched  && colorForm.get('colorName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="colorArabicName" class="form-label">Arabic Name</label>
+      <input [ngClass]="{'is-invalid': colorForm.get('colorArabicName')?.errors && colorForm.get('colorArabicName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="colorArabicName" name="colorArabicName" 
+      formControlName="colorArabicName" [(ngModel)]="color.colorArabicName"  required/>
+      @if(colorForm.get('colorArabicName')?.touched  && colorForm.get('colorArabicName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <button [disabled]="!colorForm.valid" type="submit" class="btn text-white" style="background-color: #8A1538;">Save</button>
+  </form>
+</mat-dialog-content>

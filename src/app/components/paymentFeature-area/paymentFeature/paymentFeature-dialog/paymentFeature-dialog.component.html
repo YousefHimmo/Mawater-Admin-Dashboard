@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Status</h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="paymentFeatureForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="paymentFeatureName" class="form-label">Name</label>
+      <input [ngClass]="{'is-invalid': paymentFeatureForm.get('paymentFeatureName')?.errors && paymentFeatureForm.get('paymentFeatureName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="paymentFeatureName" name="paymentFeatureName" 
+      formControlName="paymentFeatureName"  [(ngModel)]="paymentFeature.paymentFeatureName" required/>     
+      @if(paymentFeatureForm.get('paymentFeatureName')?.touched && paymentFeatureForm.get('paymentFeatureName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="paymentFeatureArabicName" class="form-label">Arabic Name</label>
+      <input [ngClass]="{'is-invalid': paymentFeatureForm.get('paymentFeatureArabicName')?.errors && paymentFeatureForm.get('paymentFeatureArabicName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="paymentFeatureArabicName" name="paymentFeatureArabicName" 
+      formControlName="paymentFeatureArabicName" [(ngModel)]="paymentFeature.paymentFeatureArabicName"  required/>
+      @if(paymentFeatureForm.get('paymentFeatureArabicName')?.touched && paymentFeatureForm.get('paymentFeatureArabicName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <button [disabled]="!paymentFeatureForm.valid" type="submit" class="btn text-white" style="background-color: #8A1538;">Save</button>
+  </form>
+</mat-dialog-content>

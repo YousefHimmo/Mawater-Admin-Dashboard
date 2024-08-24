@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Type</h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="mawaterTypeForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="mTypeName" class="form-label">Name</label>
+      <input [ngClass]="{'is-invalid': mawaterTypeForm.get('mTypeName')?.errors && mawaterTypeForm.get('mTypeName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="mTypeName" name="mTypeName" 
+      formControlName="mTypeName"  required/>     
+      @if(mawaterTypeForm.get('mTypeName')?.touched && mawaterTypeForm.get('mTypeName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="mTypeArabicName" class="form-label">Arabic Name</label>
+      <input [ngClass]="{'is-invalid': mawaterTypeForm.get('mTypeArabicName')?.errors && mawaterTypeForm.get('mTypeArabicName')?.touched}" 
+      type="text" class="form-control form-control-sm" id="mTypeArabicName" name="mTypeArabicName" 
+      formControlName="mTypeArabicName" required/>
+      @if(mawaterTypeForm.get('mTypeArabicName')?.touched && mawaterTypeForm.get('mTypeArabicName')?.hasError('required')){
+        <div class="invalid-feedback">
+            required.</div>
+      }
+    </div>
+  <div class="mb-3">
+    <label for="mawaterId" class="form-label"> Catergory</label>
+    <select class="form-select form-select-sm" formControlName="mawaterId"  
+    [ngClass]="{ 'is-invalid': mawaterTypeForm.get('mawaterId')?.errors && mawaterTypeForm.get('mawaterId')?.touched }" aria-label="Default select example">
+     @for (mawater of mawaters; track $index) {
+      <option value="{{mawater.mawaterId}}">{{mawater.mawaterName}}</option>
+     }
+    </select>
+    @if(mawaterTypeForm.get('mawaterId')?.touched &&
+    mawaterTypeForm.get('mawaterId')?.hasError('required')){
+    <div class="invalid-feedback">required.</div>
+    }
+  </div>
+    <button [disabled]="!mawaterTypeForm.valid" type="submit" class="btn text-white" style="background-color: #8A1538;">Save</button>
+  </form>
+</mat-dialog-content>
