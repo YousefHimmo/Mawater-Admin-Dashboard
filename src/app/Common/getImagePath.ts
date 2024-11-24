@@ -13,4 +13,8 @@ export class GetImagePath {
         const path = `https://firebasestorage.googleapis.com/v0/b/mawaterqatar-17f8a.appspot.com/o/banner%2F${imageGuid}?alt=media&token=73cdea71-0149-47b2-9da4-6725f3d42358`;
         return path;
     }
+    static getAdsImage(imageGuid : string) : string{
+        const path = `https://firebasestorage.googleapis.com/v0/b/mawaterqatar-17f8a.appspot.com/o/ADS%2F${imageGuid}?alt=media&token=2967a733-250c-4ec8-b5b4-9024e57149ef`;
+        return path;
+    }
 }

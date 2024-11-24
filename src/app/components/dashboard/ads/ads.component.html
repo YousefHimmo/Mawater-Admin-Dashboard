@@ -1,0 +1,42 @@
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Image</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price</th>   
+              <th scope="col">Traveled Distance</th>   
+              <th scope="col">Number Of Seats</th>
+              <th scope="col">Status</th>    
+              <th scope="col">#</th>   
+            </tr>
+          </thead>
+          <tbody>
+           @for (item of ads; track $index) {
+            <tr>
+                <td><img class="rounded " src="{{item.mainImagePath}}" width="150" height="100"></td>
+                <td>{{item.subject}}</td>
+                <td>{{item.description.slice(0,100)}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.traveledDistance}}</td>
+                <td>{{item.numberOfSeats}}</td>
+                <td [ngClass]="{
+                  'text-secondary': item.status === 0,
+                  'text-success': item.status === 1,
+                  'text-danger': item.status === 2,
+                  'text-warning': item.status === 4
+                }">
+                  {{ getStatusName(item.status) }}
+                </td>
+                <td>
+                  <button class="btn btn-sm btn-success rounded-md m-1" (click)="onUpdateAds(item)">Confirm</button> |
+                  <button class="btn btn-sm btn-danger rounded-md m-1" (click)="onRejectClick(item)">Reject</button>
+                </td>
+            </tr>
+           }
+          </tbody>
+      </table> 
+
+
+ 

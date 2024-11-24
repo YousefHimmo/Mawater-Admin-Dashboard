@@ -55,9 +55,9 @@
       }
     </div>
     <div class="mb-3">
-      <label for="catergory" class="form-label"> Catergory</label>
-      <select class="form-select form-select-sm" formControlName="catergory"  
-      [ngClass]="{ 'is-invalid': mawaterForm.get('catergory')?.errors && mawaterForm.get('catergory')?.touched }" aria-label="Default select example">
+      <label for="catergoryId" class="form-label"> Catergory</label>
+      <select class="form-select form-select-sm" formControlName="catergoryId"  
+      [ngClass]="{ 'is-invalid': mawaterForm.get('catergoryId')?.errors && mawaterForm.get('catergoryId')?.touched }" aria-label="Default select example">
        @for (category of categories; track $index) {
         <option value="{{category.categoryId}}">{{category.categoryName}}</option>
        }

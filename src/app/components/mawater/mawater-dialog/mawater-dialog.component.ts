@@ -55,7 +55,7 @@ export class MawaterDialogComponent implements OnInit {
   mawaterForm = this.fb.group({
     mawaterName: ['', Validators.required],
     mawaterArabicName: ['', Validators.required],
-    catergory : ['',Validators.required]
+    catergoryId : ['',Validators.required]
   });
   categories: Category[] = [];
 
@@ -100,7 +100,7 @@ export class MawaterDialogComponent implements OnInit {
         this.mawaterForm.setValue({
           mawaterName : this.mawater.mawaterName,
           mawaterArabicName : this.mawater.mawaterArabicName,
-          catergory :this.mawater.catergoryId,
+          catergoryId :this.mawater.catergoryId,
         })
       });
   }
